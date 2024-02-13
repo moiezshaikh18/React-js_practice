@@ -126,3 +126,11 @@ export const channelInfo = [
     verified: false,
   },
 ];
+
+export const listsData = {
+  layout: {
+    1: ["Item A", "Item B", "Item C"],
+    A: ["Apple", "Banana", "Cherry"],
+    i: ["Dog", "Cat", "Fish"],
+  },
+};

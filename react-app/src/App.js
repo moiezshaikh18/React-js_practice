@@ -1,7 +1,9 @@
 import React from "react";
 import "./App.css";
 import Video from "./components/Video";
-import { channelInfo } from "./Data/profileData";
+import { channelInfo /*listsData*/ } from "./Data/profileData";
+// import { ListCom } from "./Practice/ListCom";
+// import { ListCom } from "./Practice/ListCom";
 
 function App() {
   return (
@@ -20,9 +22,12 @@ function App() {
         ))}
       </div>
       {/* This is For Practicing react app */}
-      {/* <div style={{ background: "grey", height: "100vh" }}>
-        <Resume resume={resume} />
-      </div> */}
+      {/* <div style={{ background: "grey", height: "100vh" }}> */}
+      {/* <Resume resume={resume} /> */}
+      {/* {Object.entries(listsData.layout).map(([layout, items], index) => (
+          <ListCom layout={layout} items={items} key={index} />
+        ))} */}
+      {/* </div> */}
     </>
   );
 }
