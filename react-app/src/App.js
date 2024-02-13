@@ -19,13 +19,18 @@ function App() {
               time={video.duration}
               verifed={video.verified}
               channel={video.instructor}
-              id={video.id}
-            ></Video>
+              id={video.id}>
+              <PlayButton
+                onPlay={() => console.log("Plaayss")}
+                onPause={() => console.log("Pause")}>
+                Play
+              </PlayButton>
+            </Video>
           ))}
         </div>
-        <PlayButton />
-        <PlayButton />
       </div>
+
+      {/* /------------------------------------------------/ */}
       {/* This is For Practicing react app */}
       {/* <div style={{ background: "grey", height: "100vh" }}> */}
       {/* <Resume resume={resume} /> */}

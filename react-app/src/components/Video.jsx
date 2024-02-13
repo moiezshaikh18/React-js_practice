@@ -1,7 +1,15 @@
 import React from "react";
 import "./Video.css";
 
-const Video = ({ title, channel = "Coder Dost", views, time, verifed, id }) => {
+const Video = ({
+  title,
+  channel = "Coder Dost",
+  views,
+  time,
+  verifed,
+  id,
+  children,
+}) => {
   return (
     <div className="container">
       <div className="pic">
@@ -18,6 +26,7 @@ const Video = ({ title, channel = "Coder Dost", views, time, verifed, id }) => {
       <div className="views">
         {views}Views<span>.</span> {time}
       </div>
+      <div>{children}</div>
     </div>
   );
 };

@@ -1,10 +1,18 @@
 import React from "react";
 import "./PlayButton.css";
 
-const PlayButton = () => {
+const PlayButton = ({ children, onPlay, onPause }) => {
+  let playing = false;
+
+  const handleClick = () => {
+    if (playing) onPlay();
+    else onPause();
+    playing = !playing;
+  };
+
   return (
-    <button onClick={() => console.log("Play")} className="button">
-      Play
+    <button onClick={handleClick} className="button">
+      {children}
     </button>
   );
 };
