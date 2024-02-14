@@ -1,26 +1,16 @@
 import React, { useState } from "react";
 import "./App.css";
-import Video from "./components/Video";
 import { channelInfo /*listsData*/ } from "./Data/profileData";
-import PlayButton from "./components/PlayButton";
+import AddVideo from "./components/AddVideo";
+import { VideoList } from "./components/VideoList";
 // import { ListCom } from "./Practice/ListCom";
 // import { ListCom } from "./Practice/ListCom";
 
 function App() {
   const [videos, setVideos] = useState(channelInfo);
 
-  const handleAddVideo = () => {
-    setVideos([
-      ...videos,
-      {
-        id: videos.length + 1,
-        title: "Databases and SQL Basics",
-        instructor: "SQLMaster",
-        views: "110k",
-        duration: "4 hours",
-        verified: true,
-      },
-    ]);
+  const handleAddVideo = (video) => {
+    setVideos([...videos, { ...video, id: videos.length + 1 }]);
   };
 
   return (
@@ -31,39 +21,9 @@ function App() {
           console.log("App");
         }}
       >
-        <div>
-          <button onClick={handleAddVideo}>Add Video</button>
-        </div>
-        <div>
-          {videos.map((video) => (
-            <Video
-              key={video.id}
-              title={video.title}
-              views={video.views}
-              time={video.duration}
-              verifed={video.verified}
-              channel={video.instructor}
-              id={video.id}
-            >
-              <PlayButton
-                onPlay={(e) => console.log("Plaayss")}
-                onPause={() => console.log("Pause")}
-              >
-                {video.title}
-              </PlayButton>
-            </Video>
-          ))}
-        </div>
+        <AddVideo addVideos={handleAddVideo} />
+        <VideoList Videos={videos} />
       </div>
-
-      {/* /------------------------------------------------/ */}
-      {/* This is For Practicing react app */}
-      {/* <div style={{ background: "grey", height: "100vh" }}> */}
-      {/* <Resume resume={resume} /> */}
-      {/* {Object.entries(listsData.layout).map(([layout, items], index) => (
-          <ListCom layout={layout} items={items} key={index} />
-        ))} */}
-      {/* </div> */}
     </>
   );
 }
