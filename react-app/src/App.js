@@ -9,7 +9,12 @@ import PlayButton from "./components/PlayButton";
 function App() {
   return (
     <>
-      <div className="App-header">
+      <div
+        className="App-header"
+        onClick={() => {
+          console.log("App");
+        }}
+      >
         <div>
           {channelInfo.map((video) => (
             <Video
@@ -19,11 +24,13 @@ function App() {
               time={video.duration}
               verifed={video.verified}
               channel={video.instructor}
-              id={video.id}>
+              id={video.id}
+            >
               <PlayButton
-                onPlay={() => console.log("Plaayss")}
-                onPause={() => console.log("Pause")}>
-                Play
+                onPlay={(e) => console.log("Plaayss")}
+                onPause={() => console.log("Pause")}
+              >
+                {video.title}
               </PlayButton>
             </Video>
           ))}

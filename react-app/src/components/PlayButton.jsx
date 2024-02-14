@@ -4,9 +4,10 @@ import "./PlayButton.css";
 const PlayButton = ({ children, onPlay, onPause }) => {
   let playing = false;
 
-  const handleClick = () => {
-    if (playing) onPlay();
-    else onPause();
+  const handleClick = (e) => {
+    e.stopPropagation();
+    if (playing) onPlay(e);
+    else onPause(e);
     playing = !playing;
   };
 
