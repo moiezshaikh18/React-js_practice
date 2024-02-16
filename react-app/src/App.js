@@ -10,7 +10,17 @@ function App() {
   const [videos, setVideos] = useState(channelInfo);
 
   const handleAddVideo = (video) => {
-    setVideos([...videos, { ...video, id: videos.length + 1 }]);
+    setVideos((prev) => [...prev, { ...video, id: prev.length + 1 }]);
+  };
+
+  const deleteVideo = (id) => {
+    let newFilterArray = videos.filter((v) => v.id !== id);
+    console.log("newFilterArray", ...newFilterArray);
+    setVideos([...newFilterArray]);
+  };
+
+  const editVideo = (id) => {
+    console.log(id);
   };
 
   return (
@@ -22,7 +32,11 @@ function App() {
         }}
       >
         <AddVideo addVideos={handleAddVideo} />
-        <VideoList Videos={videos} />
+        <VideoList
+          Videos={videos}
+          deleteVideo={deleteVideo}
+          editVideo={editVideo}
+        />
       </div>
     </>
   );

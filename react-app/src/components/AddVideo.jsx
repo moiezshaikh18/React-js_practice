@@ -16,7 +16,10 @@ const AddVideo = ({ addVideos }) => {
   };
 
   const handleOnChange = (e) => {
-    setVideos({ ...videos, [e.target.name]: e.target.value });
+    setVideos((prev) => ({
+      ...prev,
+      [e.target.name]: e.target.value,
+    }));
   };
 
   return (

@@ -9,9 +9,25 @@ const Video = ({
   verifed,
   id,
   children,
+  deleteVideo,
+  editVideo,
 }) => {
   return (
-    <div className="container">
+    <div className="container" style={{ position: "relative" }}>
+      <button
+        className="button"
+        style={{ position: "absolute", right: 0 }}
+        onClick={() => deleteVideo(id)}
+      >
+        X
+      </button>
+      <button
+        className="button"
+        style={{ position: "absolute", left: 0 }}
+        onClick={() => editVideo(id)}
+      >
+        edit
+      </button>
       <div className="pic">
         <img
           src={`https://picsum.photos/id/${id}/160/90`}
