@@ -1,8 +1,9 @@
-import React, { useReducer, useState } from "react";
+import React, { useContext, useReducer, useState } from "react";
 import "./App.css";
 import { channelInfo /*listsData*/ } from "./Data/profileData";
 import AddVideo from "./components/AddVideo";
 import { VideoList } from "./components/VideoList";
+import AppThemeContext from "./context/ThemeContext";
 // import { ListCom } from "./Practice/ListCom";
 // import { ListCom } from "./Practice/ListCom";
 
@@ -31,6 +32,10 @@ function App() {
 
   const [videos, dispatch] = useReducer(videoReducer, channelInfo);
 
+  const appThemeContext = useContext(AppThemeContext);
+
+  console.log("AppThemeContext", AppThemeContext);
+
   const editVideo = (id) => {
     let newFindArray = videos.find((v) => v.id === id);
     setEditable(newFindArray);
@@ -38,10 +43,16 @@ function App() {
 
   return (
     <>
-      <div className="App-header">
-        <AddVideo dispatch={dispatch} editableVideo={editable} />
-        <VideoList Videos={videos} dispatch={dispatch} editVideo={editVideo} />
-      </div>
+      <AppThemeContext.Provider>
+        <div className="App-header">
+          <AddVideo dispatch={dispatch} editableVideo={editable} />
+          <VideoList
+            Videos={videos}
+            dispatch={dispatch}
+            editVideo={editVideo}
+          />
+        </div>
+      </AppThemeContext.Provider>
     </>
   );
 }
