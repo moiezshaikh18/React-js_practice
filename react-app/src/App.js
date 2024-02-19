@@ -8,6 +8,7 @@ import { VideoList } from "./components/VideoList";
 
 function App() {
   const [videos, setVideos] = useState(channelInfo);
+  const [editable, setEditable] = useState(null);
 
   const handleAddVideo = (video) => {
     setVideos((prev) => [...prev, { ...video, id: prev.length + 1 }]);
@@ -20,7 +21,15 @@ function App() {
   };
 
   const editVideo = (id) => {
-    console.log(id);
+    let newFindArray = videos.find((v) => v.id === id);
+    setEditable(newFindArray);
+  };
+
+  const updateVideo = (video) => {
+    const vId = videos.findIndex((v) => v.id === video.id);
+    const updatedVideo = [...videos];
+    updatedVideo.splice(vId, 1, video);
+    setVideos([...updatedVideo]);
   };
 
   return (
@@ -31,7 +40,11 @@ function App() {
           console.log("App");
         }}
       >
-        <AddVideo addVideos={handleAddVideo} />
+        <AddVideo
+          addVideos={handleAddVideo}
+          editableVideo={editable}
+          updateVideo={updateVideo}
+        />
         <VideoList
           Videos={videos}
           deleteVideo={deleteVideo}
