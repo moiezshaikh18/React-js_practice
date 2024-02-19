@@ -8,14 +8,14 @@ const initialState = {
   verified: true,
 };
 
-const AddVideo = ({ addVideos, editableVideo, updateVideo }) => {
+const AddVideo = ({ dispatch, editableVideo }) => {
   const [videos, setVideos] = useState(initialState);
 
   const handleAddVideo = (e) => {
     if (editableVideo) {
-      updateVideo(videos);
+      dispatch({ type: "UPDATE", payload: videos });
     } else {
-      addVideos(videos);
+      dispatch({ type: "ADD", payload: videos });
     }
   };
 

@@ -2,7 +2,7 @@ import React from "react";
 import Video from "./Video";
 import PlayButton from "./PlayButton";
 
-export const VideoList = ({ Videos, deleteVideo, editVideo }) => {
+export const VideoList = ({ Videos, editVideo, dispatch }) => {
   return (
     <div>
       {Videos.map((video) => (
@@ -14,7 +14,7 @@ export const VideoList = ({ Videos, deleteVideo, editVideo }) => {
           verifed={video.verified}
           channel={video.instructor}
           id={video.id}
-          deleteVideo={deleteVideo}
+          dispatch={dispatch}
           editVideo={editVideo}
         >
           <PlayButton

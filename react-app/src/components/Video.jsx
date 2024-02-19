@@ -9,7 +9,7 @@ const Video = ({
   verifed,
   id,
   children,
-  deleteVideo,
+  dispatch,
   editVideo,
 }) => {
   return (
@@ -17,7 +17,7 @@ const Video = ({
       <button
         className="button"
         style={{ position: "absolute", right: 0 }}
-        onClick={() => deleteVideo(id)}
+        onClick={() => dispatch({ type: "DELETE", payload: id })}
       >
         X
       </button>
