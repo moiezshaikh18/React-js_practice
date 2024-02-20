@@ -1,5 +1,6 @@
 import React from "react";
 import "./Video.css";
+import useVideoDispatch from "../hooks/VideosDispatch";
 
 const Video = ({
   title,
@@ -9,9 +10,9 @@ const Video = ({
   verifed,
   id,
   children,
-  dispatch,
   editVideo,
 }) => {
+  const dispatch = useVideoDispatch();
   return (
     <div className="container" style={{ position: "relative" }}>
       <button

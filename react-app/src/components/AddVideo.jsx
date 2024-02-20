@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import useVideoDispatch from "../hooks/VideosDispatch";
 
 const initialState = {
   title: "",
@@ -8,8 +9,10 @@ const initialState = {
   verified: true,
 };
 
-const AddVideo = ({ dispatch, editableVideo }) => {
+const AddVideo = ({ editableVideo }) => {
   const [videos, setVideos] = useState(initialState);
+
+  const dispatch = useVideoDispatch();
 
   const handleAddVideo = (e) => {
     if (editableVideo) {
