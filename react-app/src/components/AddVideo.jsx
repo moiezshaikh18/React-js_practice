@@ -35,7 +35,7 @@ const AddVideo = ({ editableVideo }) => {
     "Type Here".split("").forEach((char, i) => {
       setTimeout(() => {
         inputRef.current.placeholder = inputRef.current.placeholder + char;
-      }, 400 * i);
+      }, 200 * i);
     });
   }, [editableVideo]);
 
