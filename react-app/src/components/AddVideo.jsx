@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import useVideoDispatch from "../hooks/VideosDispatch";
 
 const initialState = {
@@ -11,8 +11,8 @@ const initialState = {
 
 const AddVideo = ({ editableVideo }) => {
   const [videos, setVideos] = useState(initialState);
-
   const dispatch = useVideoDispatch();
+  const inputRef = useRef(null);
 
   const handleAddVideo = (e) => {
     if (editableVideo) {
@@ -31,6 +31,12 @@ const AddVideo = ({ editableVideo }) => {
 
   useEffect(() => {
     editableVideo && setVideos(editableVideo);
+    inputRef.current.placeholder = "";
+    "Type Here".split("").forEach((char, i) => {
+      setTimeout(() => {
+        inputRef.current.placeholder = inputRef.current.placeholder + char;
+      }, 400 * i);
+    });
   }, [editableVideo]);
 
   return (
@@ -43,6 +49,7 @@ const AddVideo = ({ editableVideo }) => {
         name="title"
         onChange={handleOnChange}
         value={videos.title}
+        ref={inputRef}
       />
       <input
         type="text"
