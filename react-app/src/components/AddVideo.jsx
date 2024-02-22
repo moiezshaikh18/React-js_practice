@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { forwardRef, useEffect, useRef, useState } from "react";
 import useVideoDispatch from "../hooks/VideosDispatch";
 
 const initialState = {
@@ -9,10 +9,10 @@ const initialState = {
   verified: true,
 };
 
-const AddVideo = ({ editableVideo }) => {
+const AddVideo = forwardRef(({ editableVideo }, ref) => {
   const [videos, setVideos] = useState(initialState);
   const dispatch = useVideoDispatch();
-  const inputRef = useRef(null);
+  // const inputRef = useRef(null);
 
   const handleAddVideo = (e) => {
     if (editableVideo) {
@@ -31,12 +31,14 @@ const AddVideo = ({ editableVideo }) => {
 
   useEffect(() => {
     editableVideo && setVideos(editableVideo);
-    inputRef.current.placeholder = "";
-    "Type Here".split("").forEach((char, i) => {
-      setTimeout(() => {
-        inputRef.current.placeholder = inputRef.current.placeholder + char;
-      }, 200 * i);
-    });
+
+    // inputRef.current.focus();
+    // inputRef.current.placeholder = "";
+    // "Type Here".split("").forEach((char, i) => {
+    //   setTimeout(() => {
+    //     inputRef.current.placeholder = inputRef.current.placeholder + char;
+    //   }, 200 * i);
+    // });
   }, [editableVideo]);
 
   return (
@@ -49,7 +51,7 @@ const AddVideo = ({ editableVideo }) => {
         name="title"
         onChange={handleOnChange}
         value={videos.title}
-        ref={inputRef}
+        ref={ref}
       />
       <input
         type="text"
@@ -64,6 +66,6 @@ const AddVideo = ({ editableVideo }) => {
       </div>
     </form>
   );
-};
+});
 
 export default AddVideo;

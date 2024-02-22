@@ -1,4 +1,4 @@
-import React, { useCallback, useReducer, useState } from "react";
+import React, { useCallback, useReducer, useRef, useState } from "react";
 import "./App.css";
 import { channelInfo /*listsData*/ } from "./Data/profileData";
 import AddVideo from "./components/AddVideo";
@@ -14,6 +14,7 @@ import VideosDispatchContext from "./context/VideosDispatchContext";
 function App() {
   const [editable, setEditable] = useState(null);
   // const [data, setData] = useState([]);
+  const inputRef = useRef(null);
 
   const videoReducer = (videos, action) => {
     switch (action.type) {
