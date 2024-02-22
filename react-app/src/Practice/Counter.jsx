@@ -1,25 +1,25 @@
-import React, { useId, useRef, useState } from "react";
+import React, { useReducer } from "react";
 
 const Counter = () => {
-  const [count, setCount] = useState(0);
-  const num = useRef(0);
-  console.log(num);
+  const countReducer = (state, action) => {
+    switch (action.type) {
+      case "ADD":
+        return state + 3;
+
+      default:
+        return state;
+    }
+  };
+
+  const [count, dispatch] = useReducer(countReducer, 0);
 
   return (
-    <div>
+    <>
       <h1>{count}</h1>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          setCount((count) => count + 1);
-          setCount((count) => count + 1);
-          setCount((count) => count + 1);
-          num.current++;
-        }}
-      >
-        ADD COUNT
+      <button onClick={() => dispatch({ type: "ADD", payload: count })}>
+        ADD
       </button>
-    </div>
+    </>
   );
 };
 

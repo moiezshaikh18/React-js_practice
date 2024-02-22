@@ -9,8 +9,11 @@ import VideosDispatchContext from "./context/VideosDispatchContext";
 // import { ListCom } from "./Practice/ListCom";
 // import { ListCom } from "./Practice/ListCom";
 
+// const url = "https://my.api.mockaroo.com/videos.json?key=eaf77d30";
+
 function App() {
   const [editable, setEditable] = useState(null);
+  // const [data, setData] = useState([]);
 
   const videoReducer = (videos, action) => {
     switch (action.type) {
@@ -33,6 +36,16 @@ function App() {
   };
 
   const [videos, dispatch] = useReducer(videoReducer, channelInfo);
+
+  // console.log("DATA:", data);
+
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setData(data);
+  //     });
+  // }, []);
 
   const editVideo = (id) => {
     let newFindArray = videos.find((v) => v.id === id);
