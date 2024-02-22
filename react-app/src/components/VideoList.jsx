@@ -1,10 +1,21 @@
-import React from "react";
+import React, { useCallback, useMemo } from "react";
 import Video from "./Video";
 import PlayButton from "./PlayButton";
 import useVideos from "../hooks/Videos";
 
 export const VideoList = ({ editVideo }) => {
   const Videos = useVideos();
+
+  const play = useCallback(() => console.log("Plaayss"), []);
+  const pause = useCallback(() => console.log("Pause"), []);
+
+  const memoButton = useMemo(() => {
+    return (
+      <PlayButton onPlay={play} onPause={pause}>
+        Play
+      </PlayButton>
+    );
+  }, [pause, play]);
 
   return (
     <div>
@@ -19,12 +30,7 @@ export const VideoList = ({ editVideo }) => {
           id={video.id}
           editVideo={editVideo}
         >
-          <PlayButton
-            onPlay={(e) => console.log("Plaayss")}
-            onPause={() => console.log("Pause")}
-          >
-            {video.title}
-          </PlayButton>
+          {memoButton}
         </Video>
       ))}
     </div>

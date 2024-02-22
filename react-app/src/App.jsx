@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from "react";
+import React, { useCallback, useReducer, useState } from "react";
 import "./App.css";
 import { channelInfo /*listsData*/ } from "./Data/profileData";
 import AddVideo from "./components/AddVideo";
@@ -47,10 +47,13 @@ function App() {
   //     });
   // }, []);
 
-  const editVideo = (id) => {
-    let newFindArray = videos.find((v) => v.id === id);
-    setEditable(newFindArray);
-  };
+  const editVideo = useCallback(
+    (id) => {
+      let newFindArray = videos.find((v) => v.id === id);
+      setEditable(newFindArray);
+    },
+    [videos]
+  );
 
   return (
     <>
@@ -64,6 +67,7 @@ function App() {
           </VideosDispatchContext.Provider>
         </VideosContext.Provider>
       </AppThemeContext.Provider>
+      {/* <Counter /> */}
     </>
   );
 }

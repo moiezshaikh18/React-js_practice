@@ -13,8 +13,21 @@ const Counter = () => {
 
   const [count, dispatch] = useReducer(countReducer, 0);
 
+  // const usecall = useCallback(function fib(n) {
+  //   if (n === 1 || n === 2) {
+  //     return 1;
+  //   }
+  //   return fib(n - 1) + fib(n - 2);
+  // }, []);
+
+  // const fibMemoisez = useMemo(() => fib(50), []);
+
+  // In useCallBack we use to memoized function
+  // In useMemo we use to memoized function value
+
   return (
     <>
+      {/* {fibMemoisez} */}
       <h1>{count}</h1>
       <button onClick={() => dispatch({ type: "ADD", payload: count })}>
         ADD
