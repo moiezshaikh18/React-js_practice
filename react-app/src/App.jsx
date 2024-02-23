@@ -1,4 +1,11 @@
-import React, { useCallback, useReducer, useRef, useState } from "react";
+import React, {
+  Suspense,
+  lazy,
+  useCallback,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 import "./App.css";
 import { channelInfo /*listsData*/ } from "./Data/profileData";
 import AddVideo from "./components/AddVideo";
@@ -6,6 +13,7 @@ import { VideoList } from "./components/VideoList";
 import AppThemeContext from "./context/ThemeContext";
 import VideosContext from "./context/VideosContext";
 import VideosDispatchContext from "./context/VideosDispatchContext";
+// const Dummy = lazy(() => import("./Practice/Dummy"));
 // import { ListCom } from "./Practice/ListCom";
 // import { ListCom } from "./Practice/ListCom";
 
@@ -15,6 +23,8 @@ function App() {
   const [editable, setEditable] = useState(null);
   // const [data, setData] = useState([]);
   const inputRef = useRef(null);
+
+  const [show, setShow] = useState(false);
 
   const videoReducer = (videos, action) => {
     switch (action.type) {
@@ -70,6 +80,13 @@ function App() {
         </VideosContext.Provider>
       </AppThemeContext.Provider>
       {/* <Counter /> */}
+      {/* 
+      <button onClick={() => setShow(!show)}></button>
+      {show ? (
+        <Suspense fallback={<>Loading.....</>}>
+          <Dummy />
+        </Suspense>
+      ) : null} */}
     </>
   );
 }

@@ -1,6 +1,8 @@
-import React, { useReducer } from "react";
+import React, { useDebugValue, useId, useReducer } from "react";
 
 const Counter = () => {
+  const id = useId();
+
   const countReducer = (state, action) => {
     switch (action.type) {
       case "ADD":
@@ -12,6 +14,10 @@ const Counter = () => {
   };
 
   const [count, dispatch] = useReducer(countReducer, 0);
+
+  console.log("ID", id);
+
+  useDebugValue(count); // to check value in the debugger
 
   // const usecall = useCallback(function fib(n) {
   //   if (n === 1 || n === 2) {

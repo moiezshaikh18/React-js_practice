@@ -63,8 +63,7 @@ const AddVideo = forwardRef(({ editableVideo }, ref) => {
   return (
     <form
       style={{ display: "flex", flexDirection: "column" }}
-      onClick={(e) => e.preventDefault()}
-    >
+      onClick={(e) => e.preventDefault()}>
       <input
         type="text"
         name="title"
