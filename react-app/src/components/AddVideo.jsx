@@ -1,4 +1,10 @@
-import { forwardRef, useEffect, useRef, useState } from "react";
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+} from "react";
 import useVideoDispatch from "../hooks/VideosDispatch";
 
 const initialState = {
@@ -13,6 +19,7 @@ const AddVideo = forwardRef(({ editableVideo }, ref) => {
   const [videos, setVideos] = useState(initialState);
   const dispatch = useVideoDispatch();
   // const inputRef = useRef(null);
+  const iRef = useRef(null);
 
   const handleAddVideo = (e) => {
     if (editableVideo) {
@@ -41,6 +48,18 @@ const AddVideo = forwardRef(({ editableVideo }, ref) => {
     // });
   }, [editableVideo]);
 
+  useImperativeHandle(
+    ref,
+    () => {
+      return {
+        jumpTo() {
+          iRef.current.focus();
+        },
+      };
+    },
+    []
+  );
+
   return (
     <form
       style={{ display: "flex", flexDirection: "column" }}
@@ -51,7 +70,7 @@ const AddVideo = forwardRef(({ editableVideo }, ref) => {
         name="title"
         onChange={handleOnChange}
         value={videos.title}
-        ref={ref}
+        ref={iRef}
       />
       <input
         type="text"

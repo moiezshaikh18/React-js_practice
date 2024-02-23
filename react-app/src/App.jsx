@@ -62,8 +62,9 @@ function App() {
         <VideosContext.Provider value={videos}>
           <VideosDispatchContext.Provider value={dispatch}>
             <div className="App-header">
-              <AddVideo editableVideo={editable} />
+              <AddVideo editableVideo={editable} ref={inputRef} />
               <VideoList Videos={videos} editVideo={editVideo} />
+              <button onClick={() => inputRef.current.jumpTo()}>Focus</button>
             </div>
           </VideosDispatchContext.Provider>
         </VideosContext.Provider>
