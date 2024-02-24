@@ -1,35 +1,35 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import AddTodo from "./Components/AddTodo";
+import AppName from "./Components/AppName";
+import "../src/style/App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <center className="todo-container">
+        <AppName />
+        <AddTodo />
+        <div className="items-container">
+          <div className="container">
+            <div className="row kg-row">
+              <h5 className="col-6">Buy Milks</h5>
+              <h5 className="col-4">4/10/2023</h5>
+              <div className="col-2">
+                <button className="btn btn-danger">Delete</button>
+              </div>
+            </div>
+
+            <div className="row kg-row">
+              <h5 className="col-6">Go to Colloge</h5>
+              <h5 className="col-4">4/10/2023</h5>
+              <div className="col-2">
+                <button className="btn btn-danger">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </center>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
