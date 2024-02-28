@@ -1,0 +1,20 @@
+.display {
+  margin: 10px;
+  width: 175px;
+  border-radius: 5px;
+  font-size: 25px;
+}
+
+.btn-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.button {
+  width: 60px;
+  height: 60px;
+  margin: 3px;
+  font-weight: bolder;
+  font-size: 25px;
+}
